@@ -1,0 +1,42 @@
+import java.util.*;
+
+class Solution{
+    public int binarySearch(int[] arr, int x){
+        
+        int low = 0;
+        int high = arr.length -1;
+        
+        while(low <= high){
+            int mid = low +(high - low)/2;
+            
+            if(arr[mid] == x){
+                return mid;
+            }
+            if(arr[mid] > mid){
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+        return -1;
+        
+    }
+    public static void main(String args[]){
+        int arr[] = {1,24,22,53,464,-54,356,76};
+        Arrays.sort(arr);
+        int n = arr.length;
+        int x = -54;
+        
+        Solution  bs = new Solution();
+        
+        int result = bs.binarySearch(arr,x);
+        if(result == -1){
+            System.out.println("Element not found!");
+        }
+        else{
+            System.out.println("Found at index " + result);
+        }
+        
+    }
+}
